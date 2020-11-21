@@ -1,7 +1,5 @@
 class Spaceship extends Floater  
 {   
-    class Spaceship extends Floater  
-{   
    public Spaceship () {
      myCenterX = 250; 
      myCenterY = 250;
