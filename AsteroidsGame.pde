@@ -2,14 +2,12 @@ Spaceship bob = new Spaceship();
 Star [] sky = new Star [200];
 
 ArrayList <Asteroid> makeRain;
+ArrayList <Bullet> shots = new ArrayList <Bullet>();
 
 public void setup() 
 {
   makeRain = new ArrayList<Asteroid>();
   size(500,500);
-  for (int j = 0; j < 8; j++){
-    makeRain.add(new Asteroid());
-  }
   for (int i = 0; i < sky.length; i++)
   {
     sky[i] = new Star ();
@@ -18,6 +16,9 @@ public void setup()
 public void draw() 
 {
   background(0);
+  while (makeRain.size() < 10){
+    makeRain.add(new Asteroid());
+  }
   for(int i = 0; i< sky.length; i++){
   sky[i].show();
   }
@@ -25,13 +26,32 @@ public void draw()
     makeRain.get(j).show();
     makeRain.get(j).move();
     float d = (dist(bob.getX(), bob.getY(), makeRain.get(j).getX(), makeRain.get(j).getY()));
-    if(d < 10){
+    if(d < 15){
       makeRain.remove(j);
     }
   }
   bob.show();
   bob.move();
-}
+  for(int i = 0; i < shots.size(); i++){
+    shots.get(i).move();
+    shots.get(i).show();
+    float bye = (dist(shots.get(i).getX(), shots.get(i).getY(), bob.getX(), bob.getY()));
+    if(bye > 250){
+      shots.remove(i);
+    }
+  }
+  for(int i = 0; i < shots.size(); i++){
+    for (int j = 0; j < makeRain.size(); j++){
+      float crash = (dist(shots.get(i).getX(), shots.get(i).getY(), makeRain.get(j).getX(), makeRain.get(j).getY()));
+    if (crash < 10){
+    shots.remove(i); 
+    makeRain.remove(j);
+    break;
+      }
+    }
+  }
+ }
+
 
 public void keyPressed(){
   if (key == CODED){
@@ -53,6 +73,10 @@ public void keyPressed(){
   }else{
     if (key == 'h'){
       bob.hyperspace();
+    }else{
+      if (key == ' '){
+        shots.add(new Bullet(bob));
+      }
     }
   }
 }
