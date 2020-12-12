@@ -36,7 +36,7 @@ public void draw()
     shots.get(i).move();
     shots.get(i).show();
     float bye = (dist(shots.get(i).getX(), shots.get(i).getY(), bob.getX(), bob.getY()));
-    if(bye > 250){
+    if(bye > 150){
       shots.remove(i);
     }
   }
