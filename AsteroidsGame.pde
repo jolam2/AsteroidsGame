@@ -2,11 +2,12 @@ Spaceship bob = new Spaceship();
 Star [] sky = new Star [200];
 
 ArrayList <Asteroid> makeRain;
-ArrayList <Bullet> shots = new ArrayList <Bullet>();
+ArrayList <Bullet> shots;
 
 public void setup() 
 {
   makeRain = new ArrayList<Asteroid>();
+  shots = new ArrayList <Bullet>();
   size(500,500);
   for (int i = 0; i < sky.length; i++)
   {
