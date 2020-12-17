@@ -1,4 +1,9 @@
 class Bullet extends Floater{
+  public float getX(){return (float)(myCenterX);}
+  public float getY(){return (float)(myCenterY);}
+  public double getPointDirection(){return myPointDirection;}
+  public double getXspeed(){return myXspeed;}
+  public double getYspeed(){return myYspeed;}
   public Bullet(Spaceship bob){
     myCenterX = bob.getX();
     myCenterY = bob.getY();
@@ -11,9 +16,4 @@ class Bullet extends Floater{
     ellipse((float)myCenterX, (float)myCenterY, 10,10);
   }
   
-  public float getX(){return (float)(myCenterX);}
-  public float getY(){return (float)(myCenterY);}
-  public double getPointDirection(){return myPointDirection;}
-  public double getXspeed(){return myXspeed;}
-  public double getYspeed(){return myYspeed;}
  }
