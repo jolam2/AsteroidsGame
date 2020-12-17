@@ -36,14 +36,14 @@ public void draw()
   for(int i = 0; i < shots.size(); i++){
     shots.get(i).move();
     shots.get(i).show();
-    float bye = (dist(shots.get(i).GetX(), shots.get(i).GetY(), bob.getX(), bob.getY()));
+    float bye = (dist(shots.get(i).getX(), shots.get(i).getY(), bob.getX(), bob.getY()));
     if(bye > 150){
       shots.remove(i);
     }
   }
   for(int i = 0; i < shots.size(); i++){
     for (int j = 0; j < makeRain.size(); j++){
-      float crash = (dist(shots.get(i).GetX(), shots.get(i).GetY(), makeRain.get(j).getX(), makeRain.get(j).getY()));
+      float crash = (dist(shots.get(i).getX(), shots.get(i).getY(), makeRain.get(j).getX(), makeRain.get(j).getY()));
     if (crash < 10){
     shots.remove(i); 
     makeRain.remove(j);
